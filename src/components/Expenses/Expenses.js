@@ -1,10 +1,28 @@
+import { useState } from "react";
 
 import ExpenseItem  from "./ExpenseItem";
 import './Expenses.css';
-import Card from "./Card";
+import Card from "../UI/Card";
+import ExpensesFilter from "../NewExpense/ExpensesFilter";
 
 function Expenses(props){
+  const [enteredYear, setEnteredYear] = useState("");
+
+
+
+   
+  const saveYearDataHandler = (enteredYearData) => {
+    
+    console.log("we are in expenses");
+    console.log(enteredYearData);
+    setEnteredYear(enteredYearData);
+    console.log(enteredYear);
+
+
+  };
     return(
+      <div>
+        <ExpensesFilter onSaveYearData={saveYearDataHandler}/>
         <Card className="expenses">
         <ExpenseItem
         title={props.expenses[0].title}
@@ -27,6 +45,7 @@ function Expenses(props){
       date={props.expenses[3].date}/>
     </Card>
 
+    </div>
 
     );
 
