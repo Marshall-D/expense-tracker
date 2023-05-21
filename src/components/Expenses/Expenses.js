@@ -16,10 +16,12 @@ function Expenses(props) {
   };
   return (
     <div>
-      <ExpensesFilter onSaveYearData={saveYearDataHandler} />
       <Card className="expenses">
+      <ExpensesFilter onSaveYearData={saveYearDataHandler} />
+
         {props.expenses.map((expenses) => (
           <ExpenseItem
+          key={expenses.id}
             title={expenses.title}
             amount={expenses.amount}
             date={expenses.date}
