@@ -7,7 +7,7 @@ const ExpensesList = (props) => {
 
   return (
     <ul className="expenses_list">
-      {b.map((expense) => {
+      {props.expenses.map((expense) => {
         <ExpenseItem
           key={expense.id}
           title={expense.title}
