@@ -6,6 +6,10 @@ function ExpenseForm(props) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [showside,SetShowside] = useState(false)
+  const toggleside = () => {
+      SetShowside(!showside)
+  }
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
@@ -33,7 +37,10 @@ function ExpenseForm(props) {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    
+   <div>
+    {showside && 
+<form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
@@ -64,10 +71,23 @@ function ExpenseForm(props) {
           />
         </div>
       </div>
-      <div className="new-expense__actions">
-        <button type="submit">Add Expense</button>
+      <div style={{ display: "inline-flex" }}>
+        <div className="new-expense__actions">
+          <button onClick={toggleside} type="submit">Cancel</button>
+        </div>{" "}
+        <div className="new-expense__actions">
+          <button  type="submit">Add Expense</button>
+        </div>
+       
       </div>
-    </form>
+
+
+    </form> }
+    {!showside && 
+     <div className="new-expense__actions">
+     <button onClick={toggleside} type="submit">Add Expense</button>
+   </div>}
+   </div>
   );
 }
 export default ExpenseForm;
