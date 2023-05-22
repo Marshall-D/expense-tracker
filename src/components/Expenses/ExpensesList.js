@@ -3,17 +3,18 @@ import "./ExpensesList.css";
 
 const ExpensesList = (props) => {
   const b = props.expenses;
-  console.log(b)
-
+  console.log(b);
 
   return (
     <ul className="expenses_list">
-   
+      {b.map((expense) => {
         <ExpenseItem
-        expenses={props.expenses}
-          
-        />
-      
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />;
+      })}
     </ul>
   );
 };
