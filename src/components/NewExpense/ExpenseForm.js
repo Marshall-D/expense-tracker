@@ -3,51 +3,19 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 function ExpenseForm(props) {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
-  const [showside,SetShowside] = useState(false)
-  const toggleside = () => {
-      SetShowside(!showside)
-  }
+ 
 
-  const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
-  };
-  const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value);
-  };
-  const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
-  };
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-    const expenseData = {
-      date: new Date(enteredDate),
-      title: enteredTitle,
-      amount: enteredAmount,
-    };
-    props.onSaveExpenseData(expenseData);
-
-    setEnteredTitle("");
-    setEnteredAmount("");
-    setEnteredDate("");
-  };
 
   return (
     
    <div>
-    {showside && 
-<form onSubmit={submitHandler}>
+<form >
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
           <input
             type="text"
-            value={enteredTitle}
-            onChange={titleChangeHandler}
+          
           />
         </div>
         <div className="new-expense__control">
@@ -56,8 +24,7 @@ function ExpenseForm(props) {
             type="number"
             min="0.01"
             step="0.01"
-            value={enteredAmount}
-            onChange={amountChangeHandler}
+    
           />
         </div>
         <div className="new-expense__control">
@@ -66,14 +33,13 @@ function ExpenseForm(props) {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
-            value={enteredDate}
-            onChange={dateChangeHandler}
+         
           />
         </div>
       </div>
       <div style={{ display: "inline-flex" }}>
         <div className="new-expense__actions">
-          <button onClick={toggleside} type="submit">Cancel</button>
+          <button type="button">Cancel</button>
         </div>{" "}
         <div className="new-expense__actions">
           <button  type="submit">Add Expense</button>
@@ -82,11 +48,10 @@ function ExpenseForm(props) {
       </div>
 
 
-    </form> }
-    {!showside && 
+    </form> 
      <div className="new-expense__actions">
-     <button onClick={toggleside} type="submit">Add Expense</button>
-   </div>}
+     <button  type="submit">Add Expense</button>
+   </div>
    </div>
   );
 }
