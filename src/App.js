@@ -24,12 +24,16 @@ const expenses = [
   },
 ];
 
+
 function App() {
+  const updateExpensesDataHandler = (newData) =>{
+console.log(newData);
+  }
   
   return (
     <div>
-      <NewExpense  />
-      <Expenses expenses={expenses} ></Expenses>
+      <NewExpense onUpdateExpenses={updateExpensesDataHandler} />
+      <Expenses  expenses={expenses} ></Expenses>
     </div>
   );
 }

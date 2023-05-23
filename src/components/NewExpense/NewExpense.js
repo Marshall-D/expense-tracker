@@ -6,7 +6,7 @@ function NewExpense(props) {
     
   return (
     <div className="new-expense">
-      <ExpenseForm  />
+      <ExpenseForm updateExpenses={props.onUpdateExpenses} />
     </div>
   );
 }
