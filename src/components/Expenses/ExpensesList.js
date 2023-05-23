@@ -9,8 +9,8 @@ const ExpensesList = (props) => {
       {props.expenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
-          title={expense.title}
           amount={expense.amount}
+          title={expense.title}
           date={expense.date}
         />
       ))}
