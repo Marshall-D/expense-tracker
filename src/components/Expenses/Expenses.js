@@ -13,9 +13,8 @@ function Expenses(props) {
   return (
     <div>
       <Card className="expenses">
-        {/* <ExpensesFilter */}
+        <ExpensesFilter/>
         
-        {/* /> */}
       <ExpensesList expenses={props.expenses}/>
       </Card>
     </div>

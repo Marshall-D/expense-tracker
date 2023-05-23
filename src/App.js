@@ -29,14 +29,30 @@ function App() {
 
     const [updateExpenses, setUpdateExpenses] = useState(expenses);
 
+
+    // const addExpenseHandler = (expenseData) => {
+    //   setUpdatedExpenses((prevUpdateExpense) => {
+  
+    //     return [expenseData, ...prevUpdateExpense];
+    //   });
+      
+    // };
+
   const updateExpensesDataHandler = (newExpenseData) =>{
     const updatedExpenseData =[
 
-    
-      ...expenses,newExpenseData
+     
     ]
-    setUpdateExpenses(updatedExpenseData)
-console.log(updatedExpenseData);
+    setUpdateExpenses((prev)  => {
+      return [
+        newExpenseData,
+        ...prev
+      
+      ] 
+
+    }
+    )
+console.log(updateExpenses);
   }
   
   return (
