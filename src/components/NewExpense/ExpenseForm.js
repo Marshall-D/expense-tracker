@@ -13,33 +13,33 @@ function ExpenseForm(props) {
   };
   const amountSubmitHandler = (event) => {
     setEnteredAmount(event.target.value)
-    // const enteredAmount = event.target.value;
 
   }; const titleSubmitHandler = (event) => {
     setEnteredTitle(event.target.value)
-    // const enteredAmount = event.target.value;
 
   }; const dateSubmitHandler = (event) => {
     setEnteredDate(event.target.value)
-    // const enteredAmount = event.target.value;
 
   };
   const submitHandler = (event) =>{
     event.preventDefault();
-    // console.log(enteredAmount) 
-    // console.log(enteredTitle) 
-    // console.log(enteredDate) 
+    if (enteredAmount == "" || enteredDate == "" || enteredTitle == ""){
+      return;
+    }
+    const expenseData = {
+      id:Math.random(),
+      title:enteredTitle,
+      amount:enteredAmount,
+      date: new Date(enteredDate)
+      
+    }  
+    props.updateExpenses(expenseData)
+
     setEnteredAmount("");
     setEnteredTitle("");
     setEnteredDate("");
 
-    const expenseData = {
-      title:enteredTitle,
-      amount:enteredAmount,
-      date: new Date(enteredDate)
-    }
-props.updateExpenses(expenseData)
-    // console.log(expenseData)
+    
 
   }
 
@@ -75,7 +75,7 @@ props.updateExpenses(expenseData)
       )}
       {toggleView && (
         <div className="new-expense__actions">
-          <button onClick={toggleviewHandler} type="submit">
+          <button onClick={toggleviewHandler} type="button">
             Add Expense
           </button>
         </div>

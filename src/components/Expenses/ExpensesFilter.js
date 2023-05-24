@@ -4,14 +4,14 @@ import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
 const submitHandler = (event) => {
-  console.log(event.target.value)
+  props.ongetFilteredYear(event.target.value)
 }
   
   return (
     <div className='expenses-filter'>
       <div className='expenses-filter__control'>
         <label>Filter by year</label>
-        <select onSelect={submitHandler} >
+        <select value ={props.filteredyear} onChange={submitHandler} >
           <option value='2022'>2022</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>

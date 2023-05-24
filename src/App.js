@@ -24,41 +24,20 @@ const expenses = [
   },
 ];
 
-
 function App() {
+  const [updateExpenses, setUpdateExpenses] = useState(expenses);
 
-    const [updateExpenses, setUpdateExpenses] = useState(expenses);
+  const updateExpensesDataHandler = (newExpenseData) => {
+    setUpdateExpenses((prev) => {
+      return [newExpenseData, ...prev];
+    });
+    console.log(updateExpenses);
+  };
 
-
-    // const addExpenseHandler = (expenseData) => {
-    //   setUpdatedExpenses((prevUpdateExpense) => {
-  
-    //     return [expenseData, ...prevUpdateExpense];
-    //   });
-      
-    // };
-
-  const updateExpensesDataHandler = (newExpenseData) =>{
-    const updatedExpenseData =[
-
-     
-    ]
-    setUpdateExpenses((prev)  => {
-      return [
-        newExpenseData,
-        ...prev
-      
-      ] 
-
-    }
-    )
-console.log(updateExpenses);
-  }
-  
   return (
     <div>
       <NewExpense onUpdateExpenses={updateExpensesDataHandler} />
-      <Expenses  expenses={updateExpenses} ></Expenses>
+      <Expenses expenses={updateExpenses}></Expenses>
     </div>
   );
 }
