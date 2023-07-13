@@ -6,7 +6,8 @@ function ExpenseForm(props) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-  const [showside,SetShowside] = useState(false)
+  const [showside,SetShowside] = useState(true)
+  const [show,SetShow] = useState(false)
   const toggleside = () => {
       SetShowside(!showside)
   }
@@ -29,6 +30,11 @@ function ExpenseForm(props) {
       title: enteredTitle,
       amount: enteredAmount,
     };
+    SetShow(true)
+      console.log(enteredTitle)
+      console.log(enteredAmount)
+      console.log(show)
+    props.onSaveExpenseData(expenseData);
     props.onSaveExpenseData(expenseData);
 
     setEnteredTitle("");
